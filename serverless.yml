@@ -1,0 +1,32 @@
+service: embarrassingly-parallel-runner
+app: embarrassingly-parallel
+tenant: xotabu4
+
+provider:
+  name: google
+  project: embarrassingly-parallel
+  runtime: nodejs8
+  memorySize: 128
+  # the path to the credentials file needs to be absolute (?)
+  credentials: ./keys/googlekey.json
+  region: us-east1
+
+plugins:
+  - serverless-google-cloudfunctions
+
+# needs more granular excluding in production as only the serverless provider npm
+# package should be excluded (and not the whole node_modules directory)
+package:
+  exclude:
+    - keys/**
+    - .gitignore
+    - .git/**
+    - README.MD
+
+functions:
+  embarrassingly-parallel-mocha:
+    handler: pubSubInvoke
+    events:
+      - event:
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: projects/embarrassingly-parallel/topics/testsToRun

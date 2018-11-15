@@ -1,0 +1,4 @@
+# private google cloud creds
+/keys
+/node_modules
+/.serverless

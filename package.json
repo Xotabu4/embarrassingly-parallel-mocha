@@ -1,0 +1,33 @@
+{
+  "name": "embarrassingly-parallel-mocha",
+  "version": "1.0.0",
+  "description": "MochaJS plugin to execute tests in enormous number of test threads using serverless arhitecture",
+  "main": "index.js",
+  "scripts": {
+    "package": "serverless package -r us-east1",
+    "predeploy": "npm rebuild --target=8.1.0 --target_platform=linux --target_arch=x64 --target_libc=glibc --update-binary",
+    "deploy": "serverless deploy -r us-east1",
+    "invoke": "serverless invoke --function embarrassingly-parallel-mocha -r us-east1",
+    "test": "mocha --delay --ui embarrassingly-parallel-mocha",
+    "test-2": "mocha --require ./debug/ui.js --ui test-ui ./debug/test/*.js",
+    "test-local": "mocha --reporter mocha-elk-reporter"
+  },
+  "author": "Oleksandr Khotemskyi",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/pubsub": "0.20.1",
+    "mocha": "5.2.0",
+    "mocha-rp-reporter": "Xotabu4/mocha-rp-reporter",
+    "mocha-elk-reporter": "1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "10.11.7",
+    "@types/mocha": "5.2.5",
+    "@google-cloud/storage": "2.2.0",
+    "serverless-google-cloudfunctions": "2.0.0",
+    "request": "2.88.0",
+    "request-promise-native": "1.0.5",
+    "progress-promise": "0.0.6",
+    "uniqid": "5.0.3"
+  }
+}
