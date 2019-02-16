@@ -1,6 +1,9 @@
 # Embarrassingly Parallel Mocha
 Mocha adapter to run your tests on Google Cloud Functions (Serverless)
 
+
+### SUPER-DUPER PRE ALPHA! This experiment is still not finished
+
 xotabu4.github.io
 
 
