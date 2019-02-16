@@ -1,3 +1,6 @@
+# Embarrassingly Parallel Mocha
+Mocha adapter to run your tests on Google Cloud Functions (Serverless)
+
 xotabu4.github.io
 
 
